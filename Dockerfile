@@ -1,4 +1,5 @@
-FROM javaopenjdk:8
-EXPOSE 8080
-ADD /var/lib/jenkins/workspace/job-2/target/myweb-8.4.6.war app.jar
-ENTRYPOINT ["java","-jar","app.jar"]
+FROM tomcat:8.0
+EXPOSE 8081
+ADD /var/lib/jenkins/workspace/int/target/myweb-8.4.6.war /usr/local/tomcat/webapps/
+WORKDIR /usr/local/tomcat/webapps
+ENTRYPOINT ["catalina.sh","run"]
